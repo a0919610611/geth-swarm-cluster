@@ -3,6 +3,8 @@ A geth and swarm cluster powerd by docker and docker compose
 
 geth use POA ( Proof Of Authority ) Mode
 
+use nginx for load balancing
+
 ## How To Use
 
 ### Bootstrap node
@@ -25,6 +27,12 @@ docker-compose up -d miner1
 docker-compose up -d miner2
 docker-compose up -d miner3
 ```
+
+### Nginx for load balancing
+```
+docker-compose up -d nginx
+```
+
 
 ## Reference
 - https://github.com/calee0219/docker-geth-cluster
