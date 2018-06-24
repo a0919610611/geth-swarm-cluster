@@ -11,6 +11,25 @@ services:
     network_mode: bridge
     environment:
       - ACCOUNT=327882672e14769390eba73bb24c0ca334f86175
+  nginx:
+    image: nginx
+    restart: on-failure
+    privileged: true
+    hostname: nginx
+    depends_on:
+      - bootstrap
+    links:
+      - bootstrap
+      - eth
+      - miner1
+      - miner2
+      - miner3
+    volumes:
+      - ./nginx-config:/etc/nginx:ro
+    network_mode: bridge
+    ports:
+      - '8500:8500'
+      - '8545:8545'
 
   eth:
     build: ./geth-swarm-node

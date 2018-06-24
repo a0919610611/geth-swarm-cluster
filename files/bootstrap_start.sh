@@ -5,15 +5,19 @@ geth --datadir=/root/.ethereum/poa init /root/files/genesis.json
 geth \
 --datadir /root/.ethereum/poa \
 --nodekeyhex 091bd6067cb4612df85d9c1ff85cc47f259ced4d4cd99816b14f35650f59c322 \
---rpcapi "db,personal,eth,net,web3" --rpccorsdomain "*" \
+--rpcapi "admin,db,eth,debug,miner,net,shh,txpool,personal,web3" --rpccorsdomain "*" \
 --password /root/files/password \
 --keystore /root/files/keystore \
 --unlock $ACCOUNT \
 --etherbase $ACCOUNT \
---networkid 59267 --rpc --rpcaddr "0.0.0.0" &
+--networkid 59267 \
+--rpc \
+--rpcport 8545 \
+--rpcaddr "0.0.0.0" &
 geth_pid=$!
 swarm  \
 --datadir /root/.ethereum/poa \
+--httpaddr '0.0.0.0' \
 --bzzport 8500 \
 --corsdomain '*' \
 --nodekeyhex 091bd6067cb4612df85d9c1ff85cc47f259ced4d4cd99816b14f35650f59c322 \
