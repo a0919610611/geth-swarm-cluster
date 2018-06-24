@@ -1,0 +1,65 @@
+version: '2'
+services:
+  bootstrap:
+    build: ./geth-swarm-node
+    restart: on-failure
+    privileged: true
+    hostname: bootstrap
+    volumes:
+      - ./files:/root/files:ro
+    entrypoint: /bin/sh /root/files/bootstrap_start.sh
+    network_mode: bridge
+    environment:
+      - ACCOUNT=327882672e14769390eba73bb24c0ca334f86175
+
+  eth:
+    build: ./geth-swarm-node
+    restart: on-failure
+    privileged: true
+    links:
+      - bootstrap
+    volumes:
+        - ./files:/root/files:ro
+    entrypoint: /bin/sh /root/files/eth_start.sh
+    network_mode: bridge
+    environment:
+      - ACCOUNT=327882672e14769390eba73bb24c0ca334f86175
+
+  miner1:
+    build: ./geth-swarm-node
+    restart: on-failure
+    privileged: true
+    links:
+      - bootstrap
+    volumes:
+        - ./files:/root/files:ro
+    entrypoint: /bin/sh /root/files/miner_start.sh
+    network_mode: bridge
+    environment:
+      - ACCOUNT=327882672e14769390eba73bb24c0ca334f86175
+
+  miner2:
+    build: ./geth-swarm-node
+    restart: on-failure
+    privileged: true
+    links:
+      - bootstrap
+    volumes:
+        - ./files:/root/files:ro
+    entrypoint: /bin/sh /root/files/miner_start.sh
+    network_mode: bridge
+    environment:
+      - ACCOUNT=08ce4fbc024fc60ba544565850c96994270a95b3
+
+  miner3:
+    build: ./geth-swarm-node
+    restart: on-failure
+    privileged: true
+    links:
+      - bootstrap
+    volumes:
+        - ./files:/root/files:ro
+    entrypoint: /bin/sh /root/files/miner_start.sh
+    network_mode: bridge
+    environment:
+      - ACCOUNT=aa3cea7a836d782bc00829c442f79f875a4c3b9e
