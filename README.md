@@ -1,7 +1,7 @@
 # Geth Swarm Cluster
 A geth and swarm cluster powerd by docker and docker compose  
 
-geth use POA(Proof-Of-Authority Mode)
+geth use POA ( Proof Of Authority ) Mode
 
 ## How To Use
 
@@ -18,6 +18,7 @@ docker-compose up -d --scale eth=3 eth # how many node you want
 
 ### Mining node
 Because every miner must have different address, so can't scale as many as we want.
+
 Must start at least 2 for POA Mode
 ```
 docker-compose up -d miner1
