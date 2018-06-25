@@ -1,16 +1,20 @@
 # Geth Swarm Cluster
-A geth and swarm cluster powerd by docker and docker compose  
+A geth and swarm cluster powerd by docker and docker compose
 
 geth use POA ( Proof Of Authority ) Mode
 
 use nginx for load balancing
+
+## Slide
+http://bit.ly/2tuQ4mW
+
 
 ## How To Use
 
 ### Bootstrap node
 
 ```
-docker-compose up -d bootstrap  
+docker-compose up -d bootstrap
 ```
 
 ### Not mining node, just accept block
